@@ -1,0 +1,19 @@
+.Wrapper {
+    position: relative;
+    border: 2px solid #525252;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.Wrapper > .title {
+    position: absolute;
+    top: -12px;
+    left: 12px;
+    background-color: white;
+    color: #525252;
+    padding: 0 0.5rem;
+    font-weight: bold;
+}

@@ -1,0 +1,64 @@
+
+
+.MatchCard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 0.01fr 0.01fr;
+    border: 1px solid black;
+    position: relative;
+    border-radius: 0.5rem;
+    padding: 0.5rem;    
+}
+
+.MatchCard button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin: 0 0.25rem;
+}
+
+.MatchCard button:hover {
+    opacity: 85%;
+}
+
+.MatchCard button:active {
+    opacity: 50%;
+}
+
+.MatchCard button:disabled {
+    opacity: 30%;
+    cursor: not-allowed;
+}
+
+
+.MatchCard .cancel-button {
+    background-color: lightcoral;
+}
+
+.MatchCard .done-button {
+    background-color: #28C76F;
+}
+
+
+
+.MatchCard > label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.circular-div {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.win {
+    background-color: var(--background-950);
+}
