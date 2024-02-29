@@ -4,7 +4,7 @@ import './styles.css'
 const QueueingPage = (props) => {
 
     const {playerList, setPlayerList, getDataFromQueueing, 
-        sortPlayerList, playerKey, matchKey} = props;
+        sortPlayerList, playerKey, matchKey, setMatchList} = props;
     const [newPlayer, setNewPlayer] = useState("");
     const [playersForQueue, setPlayersForQueue] = useState([]);
 
@@ -36,6 +36,9 @@ const QueueingPage = (props) => {
         if (playerList.length === 1) {
             localStorage.setItem(playerKey, [])
             localStorage.setItem(matchKey, [])
+            setPlayerList([])
+            setMatchList([])
+            
         }
         setPlayerList(prevList => prevList.filter(player => player.name !== event.target.value))
     }

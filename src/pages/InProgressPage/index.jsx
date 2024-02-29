@@ -1,7 +1,6 @@
 import './styles.css'
 import Wrapper from '../../components/Wrapper';
 import MatchCard from '../../components/MatchCard';
-import { useEffect, useState } from 'react';
 
 const InProgressPage = (props) => {
 

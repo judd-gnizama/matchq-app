@@ -62,19 +62,21 @@
 }
 
 .Wrapped-Queueing > table td:nth-child(1) {
-    flex: 1;
+    max-width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .Wrapped-Queueing > table td:nth-last-child(1) {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: lightgrey;
     gap: 0.5rem;
 
 }
 
 .Wrapped-Queueing > table td {
     padding: 0.5rem;
-    overflow-wrap: break-word;
 }
 
 .Wrapped-Queueing button.remove {

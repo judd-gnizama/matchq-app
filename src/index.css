@@ -6,6 +6,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
+  display: grid;
+  justify-items: center;
+}
+
+body > * > * > *{
+  display: grid;
+  gap: 2rem;
 }
 
 code {

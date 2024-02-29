@@ -87,7 +87,8 @@ const Homepage = () => {
         if(playerList.length > 0) {
             localStorage.setItem(LOCALSTORAGEKEY_PLAYER, JSON.stringify(playerList))
             console.log("Saved Player")
-        }
+        } 
+
     }, [playerList])
     useEffect(() => {
         if(matchList.length > 0){
@@ -102,6 +103,7 @@ const Homepage = () => {
             <QueueingPage 
                 playerList={playerList} 
                 setPlayerList={setPlayerList} 
+                setMatchList={setMatchList}
                 getDataFromQueueing={getDataFromQueueing}
                 sortPlayerList={sortPlayerList}
                 playerKey={LOCALSTORAGEKEY_PLAYER}
