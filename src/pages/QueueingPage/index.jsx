@@ -128,12 +128,12 @@ const QueueingPage = (props) => {
                             </div>
                         </div>
 
-                        <table>
+                        <table className={playerList.length > 0 ? 'enabled' : 'hidden'}>
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Games Played</th>
-                                    <th>Last Game Time</th>
+                                    <th># Games</th>
+                                    <th>Last Played</th>
                                     <th>Standing</th>
                                     <th>Status</th>
                                     <th>Action</th>

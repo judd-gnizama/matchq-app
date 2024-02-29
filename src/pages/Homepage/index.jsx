@@ -106,10 +106,16 @@ const Homepage = () => {
                 sortPlayerList={sortPlayerList}
                 playerKey={LOCALSTORAGEKEY_PLAYER}
                 matchKey={LOCALSTORAGEKEY_MATCH}/>
-            <InProgressPage 
+            
+            {playerList.length > 0 && matchList.length > 0 ? 
+                <InProgressPage 
                 matchList={matchList}
                 setMatchList={setMatchList} 
-                setPlayerList={setPlayerList} />
+                setPlayerList={setPlayerList} 
+                />
+            : ''}
+            
+            
         </div>
     )
 }; export default Homepage;
