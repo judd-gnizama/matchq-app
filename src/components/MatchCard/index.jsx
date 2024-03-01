@@ -6,29 +6,29 @@ const MatchCard = (props) => {
 
     const {match, matchList, setMatchList, setPlayerList} = props;
     const {team1, team2, groupKey} = match;
-    const [winners, setWinners] = useState("");
+    const [match_winners, setWinners] = useState("");
     const team1Names = team1.map(item => item.name)
     const team2Names = team2.map(item => item.name)
     const [matchStatusLabel, setMatchStatusLabel] = useState("Match Ongoing");
     
 
     const handleMatchDone = () => {
-        if (winners) {
+        if (match_winners) {
             // convert winners to list of winners
             let winnerList = []
             let loserList = []
-            if (winners === "Team 1") {
+            if (match_winners === "Team 1") {
                 winnerList = team1Names
                 loserList = team2Names
-            } else if (winners === "Team 2") {
+            } else if (match_winners === "Team 2") {
                 winnerList = team2Names
                 loserList = team1Names
-            } else winnerList = []
+            }
 
             setMatchList(prevList => 
                 prevList.map(match => {
                     if (match.groupKey === groupKey) {
-                        return {...match, matchStatus: 1, winners: winnerList, losers: loserList}
+                        return {...match, matchStatus: 1, winners: winnerList, match_winners: match_winners, losers: loserList}
                     } else return match
                 }))
             setToBeReleased([...team1Names, ...team2Names]);
@@ -41,11 +41,11 @@ const MatchCard = (props) => {
         setMatchList(prevList => 
             prevList.map((match) => {
                 if (match.groupKey === groupKey) {
-                    return {...match, matchStatus: -1, winners: [], losers: []}
+                    return {...match, matchStatus: -1, match_winners: '', winners: [], losers: []}
                 } else return match
             }))
         setToBeReleased([...team1Names, ...team2Names])
-    }
+    }   
 
     const handleRadioChange = (event) => {
         setWinners(event.target.value)
@@ -74,13 +74,16 @@ const MatchCard = (props) => {
     useEffect(() => {
         const currentMatch = matchList.find(match => match.groupKey === groupKey)
         setMatchStatusLabel(getMatchLabel(currentMatch.matchStatus, currentMatch.winners))
+ 
     }, [matchList])
 
-
+    useEffect(() => {
+        const currentMatch = matchList.find(match => match.groupKey === groupKey)
+        setWinners(currentMatch.match_winners)
+    }, [match])
 
     return (
         <div className='MatchCard'>
-            {/* <label>{matchStatusLabel}</label> */}
             <div className="radio-group">
                 <input 
                 className='radio__input'
@@ -88,11 +91,11 @@ const MatchCard = (props) => {
                 name={groupKey} 
                 id={groupKey + 'radio1'}
                 value="Team 1"
-                checked={winners==="Team 1"}
+                checked={match_winners==="Team 1"}
                 onChange={handleRadioChange}
                 disabled={match.matchStatus !== 0}/>
                 <label className='radio__label' htmlFor={groupKey + 'radio1'}>
-                    {winners==="Team 1" ? 
+                    {match_winners==="Team 1" ? 
                     <box-icon name='crown'></box-icon>
                     : ''}
                     <strong>Team 1</strong>
@@ -106,11 +109,11 @@ const MatchCard = (props) => {
                 name={groupKey} 
                 id={groupKey + 'radio2'}
                 value="Team 2"
-                checked={winners==="Team 2"}
+                checked={match_winners==="Team 2"}
                 onChange={handleRadioChange}
                 disabled={match.matchStatus !== 0}/>
                 <label className='radio__label' htmlFor={groupKey + 'radio2'}>
-                    {winners==="Team 2" ? 
+                    {match_winners==="Team 2" ? 
                         <box-icon name='crown'></box-icon>
                         : ''}
                     <strong>Team 2</strong>
