@@ -169,7 +169,10 @@ const QueueingPage = (props) => {
                                                 className='remove' 
                                                 onClick={handleRemove}
                                                 value={player.name}
-                                                disabled={player.playerStatus==="in-game"} >Remove</button>
+                                                disabled={player.playerStatus==="in-game"} 
+                                                >
+                                                    <box-icon name='trash'></box-icon>
+                                                </button>
                                         </td>
                                         
                                     </tr>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './styles.css'
+import 'boxicons'
 
 const MatchCard = (props) => {
 
@@ -79,46 +80,60 @@ const MatchCard = (props) => {
 
     return (
         <div className='MatchCard'>
-            <label>{matchStatusLabel}</label>
-            <label>
+            {/* <label>{matchStatusLabel}</label> */}
+            <div className="radio-group">
                 <input 
+                className='radio__input'
                 type="radio" 
                 name={groupKey} 
+                id={groupKey + 'radio1'}
                 value="Team 1"
                 checked={winners==="Team 1"}
                 onChange={handleRadioChange}
                 disabled={match.matchStatus !== 0}/>
-                <div>
+                <label className='radio__label' htmlFor={groupKey + 'radio1'}>
+                    {winners==="Team 1" ? 
+                    <box-icon name='crown'></box-icon>
+                    : ''}
                     <strong>Team 1</strong>
                     {team1Names && team1Names.map((player, index) => 
                     <p key={index}>{player}</p>)}
-                </div>
-
-            </label>
-            <label>
+                </label>
 
                 <input 
+                className='radio__input'
                 type="radio" 
                 name={groupKey} 
+                id={groupKey + 'radio2'}
                 value="Team 2"
                 checked={winners==="Team 2"}
                 onChange={handleRadioChange}
                 disabled={match.matchStatus !== 0}/>
-                <div>
+                <label className='radio__label' htmlFor={groupKey + 'radio2'}>
+                    {winners==="Team 2" ? 
+                        <box-icon name='crown'></box-icon>
+                        : ''}
                     <strong>Team 2</strong>
                     {team2Names && team2Names.map((player, index) => 
                     <p key={index}>{player}</p>)}
-                </div>
-                
-            </label>
-            <button 
-                className='done-button' 
-                onClick={handleMatchDone}
-                disabled={match.matchStatus !== 0}>Done</button>
-            <button 
-                className='cancel-button' 
-                onClick={handleMatchCancel}
-                disabled={match.matchStatus !== 0}>Cancel</button>
+                </label>
+
+            </div>
+
+            <div className="button-group">
+                <button 
+                    className='done-button' 
+                    onClick={handleMatchDone}
+                    disabled={match.matchStatus !== 0}>
+                        <box-icon className='check' name='check-circle'></box-icon>
+                    </button>
+                <button 
+                    className='cancel-button' 
+                    onClick={handleMatchCancel}
+                    disabled={match.matchStatus !== 0}>
+                        <box-icon className='cancel' name='x-circle' ></box-icon>
+                    </button>
+            </div>    
 
         </div>
     )
