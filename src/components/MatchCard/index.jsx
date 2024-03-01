@@ -84,7 +84,7 @@ const MatchCard = (props) => {
 
     return (
         <div className='MatchCard'>
-            <div className="radio-group">
+            <div className={"radio-group" + (match.matchStatus!==0 ? " disabled": " ")}>
                 <input 
                 className='radio__input'
                 type="radio" 

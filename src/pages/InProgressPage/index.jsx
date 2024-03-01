@@ -11,7 +11,7 @@ const InProgressPage = (props) => {
     return (
         <div className='InProgressPage'>
             <Wrapper
-                title="In Progress"
+                title="Matches"
                 children={
                     <div className='Wrapper-div'>
                         {matchList && matchList.map((match, index)=>
