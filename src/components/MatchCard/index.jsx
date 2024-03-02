@@ -103,12 +103,12 @@ const MatchCard = (props) => {
                 className='radio__input'
                 type="radio" 
                 name={groupKey} 
-                id={groupKey + 'radio1'}
+                id={(groupKey + 'radio1')}
                 value="Team 1"
                 checked={match_winners==="Team 1"}
                 onChange={handleRadioChange}
                 disabled={match.matchStatus !== 0}/>
-                <label className='radio__label' htmlFor={groupKey + 'radio1'}>
+                <label className='radio__label' htmlFor={(groupKey + 'radio1')}>
                     {match_winners==="Team 1" ? 
                     <box-icon name='medal'></box-icon>
                     : ''}
@@ -121,12 +121,12 @@ const MatchCard = (props) => {
                 className='radio__input'
                 type="radio" 
                 name={groupKey} 
-                id={groupKey + 'radio2'}
+                id={(groupKey + 'radio2')}
                 value="Team 2"
                 checked={match_winners==="Team 2"}
                 onChange={handleRadioChange}
                 disabled={match.matchStatus !== 0}/>
-                <label className='radio__label' htmlFor={groupKey + 'radio2'}>
+                <label className='radio__label' htmlFor={(groupKey + 'radio2')}>
                     {match_winners==="Team 2" ? 
                         <box-icon name='medal'></box-icon>
                         : ''}

@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <Toaster richColors/>
+      <Toaster richColors position='top-center'/>
       <Homepage/>
     </div>
   );
