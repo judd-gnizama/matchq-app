@@ -32,7 +32,7 @@ const QueueingPage = (props) => {
         }
     }
 
-    const handleRemove = (event) => {
+    const handleRemove = (_name) => {
         if (playerList.length === 1) {
             localStorage.setItem(playerKey, [])
             localStorage.setItem(matchKey, [])
@@ -40,7 +40,7 @@ const QueueingPage = (props) => {
             setMatchList([])
             
         }
-        setPlayerList(prevList => prevList.filter(player => player.name !== event.target.value))
+        setPlayerList(prevList => prevList.filter(player => player.name !== _name))
     }
 
     const handleDropdownChange = (event) => {
@@ -84,8 +84,6 @@ const QueueingPage = (props) => {
                     prevList.map((player)=> {
                         if(player.currentTeam !== "N/A") {
                             player.playerStatus = "in-game";
-                            const timestamp = Date.now()
-                            player.lastGame = new Date(timestamp).toLocaleTimeString();
                         }
                         return player;
                     }))
@@ -165,14 +163,13 @@ const QueueingPage = (props) => {
                                                 <option value="Team 1">Team 1</option>
                                                 <option value="Team 2">Team 2</option>
                                             </select>
-                                            <button 
+                                            <box-icon 
+                                                name='trash' 
                                                 className='remove' 
-                                                onClick={handleRemove}
+                                                onClick={() => handleRemove(player.name)}
                                                 value={player.name}
-                                                disabled={player.playerStatus==="in-game"} 
-                                                >
-                                                    <box-icon name='trash'></box-icon>
-                                                </button>
+                                                disabled={player.playerStatus==="in-game"}>
+                                            </box-icon>
                                         </td>
                                         
                                     </tr>

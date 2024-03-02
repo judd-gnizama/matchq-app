@@ -31,7 +31,9 @@ const MatchCard = (props) => {
                         return {...match, matchStatus: 1, winners: winnerList, match_winners: match_winners, losers: loserList}
                     } else return match
                 }))
+            
             setToBeReleased([...team1Names, ...team2Names]);
+            setLastGamePlayed([...team1Names, ...team2Names])
             
             
         } else console.log("No winners Selected")
@@ -59,6 +61,15 @@ const MatchCard = (props) => {
             }));
     }
 
+    const setLastGamePlayed = (names) => {
+            setPlayerList(prevList => prevList.map((player) => {
+                    if (names.includes(player.name)) {
+                        const timestamp = Date.now()
+                        return {...player, 
+                            lastGame: new Date(timestamp).toLocaleTimeString()}
+                    } else return player
+                }));
+        }
     const getMatchLabel = (matchStatus, winners) => {
         if(matchStatus === -1) return "Match Cancelled" 
         if(matchStatus === 0) return "Match Ongoing" 
@@ -84,7 +95,7 @@ const MatchCard = (props) => {
 
     return (
         <div className='MatchCard'>
-            <div className={"radio-group" + (match.matchStatus!==0 ? " disabled": " ")}>
+            <div className={"radio-group" + (match.matchStatus!==0 ? " disabled": " ") + (match.matchStatus===-1 ? " cancelled": " ")}>
                 <input 
                 className='radio__input'
                 type="radio" 
@@ -96,7 +107,7 @@ const MatchCard = (props) => {
                 disabled={match.matchStatus !== 0}/>
                 <label className='radio__label' htmlFor={groupKey + 'radio1'}>
                     {match_winners==="Team 1" ? 
-                    <box-icon name='crown'></box-icon>
+                    <box-icon name='medal'></box-icon>
                     : ''}
                     <strong>Team 1</strong>
                     {team1Names && team1Names.map((player, index) => 
@@ -114,7 +125,7 @@ const MatchCard = (props) => {
                 disabled={match.matchStatus !== 0}/>
                 <label className='radio__label' htmlFor={groupKey + 'radio2'}>
                     {match_winners==="Team 2" ? 
-                        <box-icon name='crown'></box-icon>
+                        <box-icon name='medal'></box-icon>
                         : ''}
                     <strong>Team 2</strong>
                     {team2Names && team2Names.map((player, index) => 

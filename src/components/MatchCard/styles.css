@@ -2,6 +2,11 @@
     opacity: 50%;
 }
 
+.cancelled {
+    opacity: 50%;
+    background-color: lightcoral;
+}
+
 
 .MatchCard {
     display: grid;
@@ -34,9 +39,21 @@
 
 .radio__label {
     padding: 0.5rem;
+    padding-top: 1rem;
     cursor: pointer;
     flex: 1;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.radio__label > strong {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .radio__label > box-icon {
@@ -47,7 +64,7 @@
 }
 
 .radio__label > p {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
 }
 
 .radio__input:checked + .radio__label{
