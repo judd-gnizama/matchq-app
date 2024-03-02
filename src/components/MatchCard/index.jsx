@@ -71,14 +71,9 @@ const MatchCard = (props) => {
                 }));
         }
     const getMatchLabel = (matchStatus, winners) => {
-        if(matchStatus === -1) return "Match Cancelled" 
-        if(matchStatus === 0) return "Match Ongoing" 
-        if(matchStatus === 1) {
-            return (<div>
-                        Winner!
-                        {winners.map((player, index) => <p key={index}>{player}</p>)}
-                    </div>)
-        }
+        if(matchStatus === -1) return "Cancelled" 
+        if(matchStatus === 0) return "" 
+        if(matchStatus === 1) return "Recorded"
                     
     }
 
@@ -95,7 +90,10 @@ const MatchCard = (props) => {
 
     return (
         <div className='MatchCard'>
-            <div className={"radio-group" + (match.matchStatus!==0 ? " disabled": " ") + (match.matchStatus===-1 ? " cancelled": " ")}>
+            <div className="radio-group">
+                {match.matchStatus !==0 ? 
+                    <h1 className={'matchStatus' + (match.matchStatus===-1 ? " cancelled": " recorded")}>{matchStatusLabel}</h1> 
+                : ""}
                 <input 
                 className='radio__input'
                 type="radio" 
