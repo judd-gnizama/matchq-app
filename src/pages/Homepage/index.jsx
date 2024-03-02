@@ -2,6 +2,7 @@ import Header from "../../components/Header";
 import QueueingPage from "../QueueingPage";
 import InProgressPage from "../InProgressPage";
 import { useEffect, useState } from "react";
+import {Toaster, toast} from 'sonner';
 
 const Homepage = () => {
 

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './App.css';
 import Homepage from './pages/Homepage';
+import {Toaster, toast} from 'sonner';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
 
   return (
     <div className="App">
+      <Toaster richColors/>
       <Homepage/>
     </div>
   );

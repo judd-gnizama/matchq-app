@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './styles.css'
 import 'boxicons'
+import { toast } from 'sonner';
 
 const MatchCard = (props) => {
 
@@ -34,9 +35,12 @@ const MatchCard = (props) => {
             
             setToBeReleased([...team1Names, ...team2Names]);
             setLastGamePlayed([...team1Names, ...team2Names])
+            toast.success("Match Recorded")
             
             
-        } else console.log("No winners Selected")
+        } else toast.error("No winners Selected.", {
+            description:"Please select winning team"
+        })
     }
     
     const handleMatchCancel = () => {
@@ -47,6 +51,7 @@ const MatchCard = (props) => {
                 } else return match
             }))
         setToBeReleased([...team1Names, ...team2Names])
+        toast.success("Match Cancelled")
     }   
 
     const handleRadioChange = (event) => {

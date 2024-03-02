@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import Wrapper from '../../components/Wrapper';
 import './styles.css'
+import {toast} from 'sonner';
+
+
+
 const QueueingPage = (props) => {
 
     const {playerList, setPlayerList, getDataFromQueueing, 
@@ -25,11 +29,12 @@ const QueueingPage = (props) => {
                 }])
                 setNewPlayer("")
                 // sortPlayerList(playerList)
+                toast.success("Player added")
                 
             } else {
-                console.log("Already in List")
+                toast.error("Player already on the list")
             }
-        }
+        } else toast.error("Player Name must not be empty")
     }
 
     const handleRemove = (_name) => {
@@ -87,12 +92,18 @@ const QueueingPage = (props) => {
                         }
                         return player;
                     }))
+                toast.success("Players Queued. Match added")
 
-            } else {
-                console.log("Player Number exceed 2")
+            } else if (tempTeam1List.length === 0 && tempTeam2List.length === 0) {
+                toast.error("No players queued.")
+            } 
+            
+            
+            else {
+                toast.error('Exceeded number of players')
             }
         } else {
-            console.log("Unbalanced teams")
+            toast.error('Unbalanced number of players')
         }
     }
 
