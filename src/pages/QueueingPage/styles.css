@@ -70,7 +70,7 @@
     overflow: hidden;
     font-size: 1.125rem;
     font-weight: 700;
-    color: #cf0909;
+    color: #da4b4b;
     
 }
 
@@ -101,7 +101,7 @@
 
 
 .Wrapped-Queueing .disabled {
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0.614);
     color: lightgray;
 }
 
