@@ -1,1 +1,1 @@
-# matchq-app
+QMaster streamlines badminton court management for queue masters. Players queue within the app, and it tracks games played, idle time, and win/loss records - all crucial for deciding who plays next. This early React project honed my UI/UX skills and provided a hands-on introduction to hooks (useState, useEffect) and component creation. NOTE: Data persistence is only client-side using local JSON storage. Nonetheless, it demonstrates my foundation in building interactive React applications.
